@@ -107,14 +107,13 @@ frozen weights, then a per-final **decision layer**: `gru` pins the class-2 / cl
 predicted shares (3.3% / 3.6%); `robust_v5dist` prior-matches to v5's distribution.
 The tabular members use the **196-d "richest"** features (172-d `richer` + 24 jerk/RMS
 motion features); CatBoost uses 172-d `richer`; the deep models read the raw 300×6
-windows. Full analysis and ablations are in **[REPORT.md](REPORT.md)**.
-
+windows. Full analysis and ablations are in the report
 | File | Strategy | Public LB |
 |------|----------|-----------|
 | `submission/submission_tcn_gru.csv` | public-tuned rare-class calibration | 0.8160 |
 | `submission/submission_tcn_robust_v5dist.csv` | distribution-robust (private bet) | 0.8115 |
 
-## What's in the repo (git)
+## What's in the repo
 
 `.gitignore` keeps the repo lean (~11 MB) while still reproducing the finals.
 **Tracked:** `src/`, `reproduce/`, `analysis/*.py` + `analysis/figures/*.png`,
