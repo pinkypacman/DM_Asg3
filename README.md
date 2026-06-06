@@ -42,6 +42,14 @@ python analysis/ablation.py     # Q2/Q4 feature, ensemble, decision-layer ablati
 > nondeterministic, so a full retrain yields an *equivalent* — not bit-identical —
 > model; for the exact graded submissions use path **A**.
 
+**One command** runs the whole pipeline below (rebuild every cache → finals):
+
+```bash
+CUDA_VISIBLE_DEVICES=0 ./train_from_scratch.sh
+```
+
+Or run the stages individually:
+
 ```bash
 # 1. data → windows, user-grouped folds, and the feature sets
 python -m src.data                              # → cache/windows.npz
@@ -120,6 +128,7 @@ raw dataset (`train/`, `test/`, `Dataset/`), logs, generated submission CSVs,
 ```
 README.md / REPORT.md         this file / the written report (+ analysis/figures/)
 requirements.txt              pinned dependencies
+train_from_scratch.sh         one-command full retrain → finals (path B)
 sample_submission.csv         submission template (Id, Label)
 train/ test/ Dataset/         raw per-user accelerometer windows (git-ignored)
 src/                          pipeline: data, cv, features(+richest), gbdt, xgb,
