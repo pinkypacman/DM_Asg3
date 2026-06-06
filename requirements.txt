@@ -1,0 +1,15 @@
+# Reproducing the two final submissions (reproduce/build_finals.py) needs only:
+#   numpy, pandas
+# The analysis scripts (analysis/*.py) additionally need:
+#   scikit-learn, scipy, matplotlib, lightgbm
+# Full model retraining (src/) additionally needs:
+#   xgboost, catboost, torch (GPU for the deep models)
+numpy>=2.2.6
+pandas>=2.3.3
+scikit-learn>=1.7.2
+scipy>=1.15.2
+matplotlib>=3.10.9
+lightgbm>=4.6.0
+xgboost>=1.7.6
+catboost>=1.2.10
+torch>=2.4.1

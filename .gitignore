@@ -1,0 +1,65 @@
+# =============================================================================
+# .gitignore — keep the repo lean while still reproducing the best model.
+#
+# What stays tracked (the reproduction path):
+#   src/  reproduce/  analysis/*.py  analysis/figures/*.png
+#   README.md  REPORT.md  requirements.txt  sample_submission.csv
+#   the SMALL prediction caches in cache/*.npz that reproduce/build_finals.py needs
+#
+# What is ignored: raw data, logs, generated submissions, archived experiments,
+# and the bulky/regenerable cache artifacts (raw-array, feature, checkpoint files).
+# =============================================================================
+
+# ---- raw dataset (restore from Kaggle to retrain from scratch) --------------
+Dataset/
+train/
+test/
+*.zip
+
+# ---- logs & scratch output --------------------------------------------------
+*.log
+logs/
+_*.txt
+*_out.txt
+*_err.txt
+
+# ---- generated submissions (regenerate: python reproduce/build_finals.py) ---
+submission/*.csv
+
+# ---- archived / experimental material (not needed to reproduce the finals) --
+archive/
+catboost_info/
+
+# ---- python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+*.ipynb
+
+# ---- agent / editor state ---------------------------------------------------
+.claude/
+.vscode/
+.idea/
+.DS_Store
+
+# ---- bulky / regenerable cache artifacts ------------------------------------
+# Keep the small prediction caches (cache/*.npz model outputs) so the finals
+# reproduce; exclude raw-array, feature, checkpoint, and intermediate files.
+# (These are rebuilt from the dataset via the src/ pipeline.)
+cache/windows.npz
+cache/features*.npz
+cache/*.pt
+cache/*.npy
+cache/tcn_embed_*.npz
+cache/*_history.json
+cache/*.sh
+
+# orphaned experiment-scratch outputs (their scripts live in archive/experiments/)
+cache/_exp_*.npz
+cache/exp1_binary.npz
+cache/exp3_rescue.npz
+cache/_catboost_p*.npz
+
+REPORT.md
